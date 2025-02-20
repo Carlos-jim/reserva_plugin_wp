@@ -11,6 +11,7 @@ License: GPL2
 
 // Incluir el archivo del formulario
 require_once plugin_dir_path(__FILE__) . '/components/formulario.php';
+require_once plugin_dir_path(__FILE__) . '/components/menu-admin/menu.php';
 
 // Registrar shortcode para el formulario
 add_shortcode('formulario_reserva', 'mostrar_formulario_reserva');
