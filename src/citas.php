@@ -1,7 +1,6 @@
-<?php 
-
-
-function mostrar_citas() {
+<?php
+function pagina_citas()
+{
     global $wpdb;
 
     // Consulta para obtener las citas
@@ -50,5 +49,3 @@ function mostrar_citas() {
     echo '</table>';
     echo '</div>';
 }
-
-mostrar_citas();

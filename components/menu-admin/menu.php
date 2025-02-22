@@ -1,34 +1,33 @@
 <?php
 
-function mi_plugin_menu() {
+function mi_plugin_menu()
+{
     // Agregar menú principal
     add_menu_page(
-        'Gestión de Citas',    
-        'Citas',              
-        'manage_options',      
-        'mi-plugin-citas',     
-        'pagina_citas',        
-        'dashicons-calendar',  
-        25                     
-    );
-
-    // Agregar submenús
-    add_submenu_page(
-        'mi-plugin-citas',  
-        'Citas',            
-        'Citas',            
-        'manage_options',   
-        'mi-plugin-citas',  
-        'pagina_citas'      
-    );
-
-    add_submenu_page(
-        'mi-plugin-citas',
-        'Empleados',
-        'Empleados',
+        'Citas',
+        'Citas',
         'manage_options',
-        'mi-plugin-empleados',
-        'pagina_empleados'
+        'mi-plugin-citas',
+        'pagina_citas',
+        'dashicons-calendar',
+        25
+    );
+
+    add_submenu_page(
+        'mi-plugin-citas', // Slug del menú principal
+        'Citas',      // Título de la página
+        'Citas',      // Título del menú
+        'manage_options', // Capacidad requerida
+        'mi-plugin-citas', // Slug de la página
+        'pagina_citas'    // Función de callback
+    );
+    add_submenu_page(
+        'mi-plugin-citas', // Slug del menú principal
+        'Empleados',      // Título de la página
+        'Empleados',      // Título del menú
+        'manage_options', // Capacidad requerida
+        'mi-plugin-empleados', // Slug de la página
+        'pagina_empleados'    // Función de callback
     );
 
     add_submenu_page(
@@ -41,64 +40,10 @@ function mi_plugin_menu() {
     );
 }
 
-// Función para la página de Citas
-function pagina_citas() {
-    global $wpdb;
-
-    // Consulta para obtener las citas
-    $tabla_citas = $wpdb->prefix . 'appointments'; // Cambia esto si tu tabla tiene otro nombre
-    $citas = $wpdb->get_results("SELECT * FROM $tabla_citas ORDER BY fecha_hora DESC");
-
-    // HTML para mostrar las citas
-    echo '<div class="wrap">';
-    echo '<h1>Gestión de Citas</h1>';
-
-    // Comienza la tabla
-    echo '<table class="wp-list-table widefat fixed striped">';
-    echo '<thead>
-            <tr>
-                <th>ID</th>
-                <th>Ubicación</th>
-                <th>Servicio</th>
-                <th>Trabajador</th>
-                <th>Cliente</th>
-                <th>Fecha y Hora</th>
-                <th>Estado</th>
-                <th>Acción</th>
-            </tr>
-          </thead>';
-    echo '<tbody>';
-
-    // Mostrar las citas
-    if (count($citas) > 0) {
-        foreach ($citas as $cita) {
-            echo '<tr>';
-            echo '<td>' . esc_html($cita->id) . '</td>';
-            echo '<td>' . esc_html($cita->ubicacion) . '</td>';
-            echo '<td>' . esc_html($cita->servicio) . '</td>';
-            echo '<td>' . esc_html($cita->trabajador) . '</td>';
-            echo '<td>' . esc_html($cita->cliente) . '</td>';
-            echo '<td>' . esc_html($cita->fecha_hora) . '</td>';
-            echo '<td>' . esc_html($cita->estado) . '</td>';
-            echo '<td><a href="#">Ver</a> | <a href="#">Editar</a></td>';
-            echo '</tr>';
-        }
-    } else {
-        echo '<tr><td colspan="8">No hay citas disponibles.</td></tr>';
-    }
-
-    echo '</tbody>';
-    echo '</table>';
-    echo '</div>';
-}
-
-// Función para la página de Empleados
-function pagina_empleados() {
-    echo '<h1>Gestión de Empleados</h1>';
-}
 
 // Función para la página de Ajustes
-function pagina_ajustes() {
+function pagina_ajustes()
+{
     echo '<h1>Ajustes del Plugin</h1>';
 }
 
