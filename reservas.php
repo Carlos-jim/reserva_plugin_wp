@@ -20,4 +20,8 @@ include_once plugin_dir_path(__FILE__) . '/src/citas.php';
 add_shortcode('formulario_reserva', 'mostrar_formulario_reserva');
 
 
-
+function cargar_recursos_empleados() {
+    wp_enqueue_style('empleados-css', plugin_dir_url(__FILE__) . '/style/modal_add.css');
+    wp_enqueue_script('empleados-js', plugin_dir_url(__FILE__) . '/js/modal_add.js', array(), false, true);
+}
+add_action('admin_enqueue_scripts', 'cargar_recursos_empleados');
