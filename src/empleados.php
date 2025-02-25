@@ -13,9 +13,10 @@ function pagina_empleados()
     echo '<div class="wrap">';
     echo '<h1>Gestión de Empleados</h1>';
     echo '<div style="display: flex; justify-content: flex-end; align-items: center; padding: 10px 0;">
-    <button id="openModal" style="background-color: #2271b1; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 3px;">
-        Añadir Empleado
-    </button>
+    <button id="openModal" style="background-color: #2271b1; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 3px; display: flex; align-items: center; gap: 8px;">
+    <span class="dashicons dashicons-businessperson"></span>
+    Añadir Empleado
+</button>
   </div>';
 
     echo '<table class="wp-list-table widefat fixed striped">';
@@ -40,9 +41,13 @@ function pagina_empleados()
             echo '<td>' . esc_html($empleado->email) . '</td>';
             echo '<td><a href="' . esc_url($empleado->link) . '" target="_blank">' . esc_html($empleado->link) . '</a></td>';
             echo '<td>
-                    <a href="#" class="edit">✏️</a>
-                    <a href="#" class="delete">🗑️</a>
-                  </td>';
+        <a href="#" class="edit" title="Editar">
+            <span class="dashicons dashicons-edit"></span>
+        </a>
+        <a href="#" class="delete" title="Eliminar">
+            <span class="dashicons dashicons-trash"></span>
+        </a>
+      </td>';
             echo '</tr>';
         }
     } else {

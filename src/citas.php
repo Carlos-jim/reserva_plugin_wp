@@ -11,9 +11,10 @@ function pagina_citas()
     echo '<div class="wrap">';
     echo '<h1>Gestión de Citas</h1>';
     echo '<div style="display: flex; justify-content: flex-end; align-items: center; padding: 10px 0;">
-    <button id="openModal" style="background-color: #2271b1; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 3px;">
-        Añadir Cita
-    </button>
+    <button id="openModal" style="background-color: #2271b1; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 3px; display: flex; align-items: center; gap: 8px;">
+    <span class="dashicons dashicons-calendar"></span>
+    Añadir Cita
+</button>
   </div>';
 
     // Comienza la tabla
